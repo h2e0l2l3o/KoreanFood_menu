@@ -118,7 +118,7 @@ function sortMenu(option, word = "") {
   }
 
   // 기존 메뉴 리스트 내용 제거
-  menuList.innerHTML = "";
+  // menuList.innerHTML = "";
 
   menuList.innerHTML = filteredItems
     .map(
