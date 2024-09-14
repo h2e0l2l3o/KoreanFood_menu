@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Pen+Script&display=swap");
+
+* {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  /* 부모요소의 주 축(가로축)에서 자식 요소들을 가운데로 정렬 */
+  align-items: center;
+  /* 교차 축에서의 정렬(세로축 정렬) */
+  flex-direction: column;
+  padding: 50px 0;
+  margin: 0 40px;
+  background-color: #ede5d4;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 30px;
+  border-bottom: solid 2px #7e3a19;
+  width: 100%;
+  color: #7e3a19;
+}
+
+.icon {
+  padding-bottom: 20px;
+  font-size: 50px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  flex-direction: column;
+}
+
+.button_area {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  /* justify-content: space-between는 두 자식 요소를 양 끝에 배치하고 싶을 때 사용함 */
+  padding-bottom: 40px;
+}
+
+.filtering {
+  display: flex;
+  right: 0;
+}
+
+#keyword {
+  border-radius: 5px;
+  border: solid 1px lightslategray;
+  margin-right: 5px;
+  padding-left: 10px;
+  width: 300px;
+}
+
+.menu {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  /* gap으로 요소 간격 지정 가능 */
+  flex-wrap: wrap;
+  /* 요소들이 넘치면 다음 줄로 넘어가게 하기 위해 flex-wrap: wrap 사용 */
+}
+.card {
+  flex-basis: calc(33.33% - 10px);
+  /* 요소의 너비를 3등분함(33.33%)
+  각 요소의 너비를 3등분하되, 간격(gap)을 고려해 calc()를 사용하여 정확히 3개씩 배치되도록 함. */
+  margin-bottom: 10px; /* 줄 간격을 위해 아래 여백 추가 */
+}
+.card-img-top {
+  height: 250px;
+  /* 사진 사이즈를 일정하게 하고 싶었음 */
+}
