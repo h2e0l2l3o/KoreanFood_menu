@@ -196,3 +196,34 @@
       ```
         - 이런식으로 아예 `sortMenu` 함수를 만들어서 사용(가독성 높이기 위함)
         - 각 카테고리별로 option 값 지정해서 그 option 값에 해당되는 메뉴들만 filtering해서 새로운 배열을 만들어줌. 그리고 만든 배열을 기반으로 `innerHTML` 사용해서 요소 추가해줌.
+
+      
+#### 추가적인 내용
+  1) 요소의 ID를 사용해서 js에서 그 요소 지정할 때, `getElementByID`와 `querySelector` 차이  
+    - `querySelector("#menu-list")`: CSS 선택자를 사용하기 때문에 ID 앞에 #을 붙여야함.
+        - **querySelector**는 더 복잡한 CSS 선택자를 처리할 수 있지만, 선택자가 복잡할수록 속도가 느릴 수 있음. 단일 ID 선택을 한다면 **getElementById**보다 성능이 떨어짐.
+
+    - `getElementById("menu-list")`: getElementById는 오직 ID 값만 입력하므로 #을 붙이면 안 됨.
+        - 특정 ID의 요소를 바로 찾기 때문에 빠르다. DOM에서 ID는 고유해야 하므로, 검색이 최적화되어 있음.
+
+    - 정리하자면, `document.querySelector()`는 css 선택자를 사용해 요소를 선택함.(첫번째로 일치하는 요소 하나만 반환함.) 그래서, `document.querySelector('div > p.myClass')` 이런 식으로 복잡한 css 선택자 만들 수 있음. 하지만, `document.getElementByID`는 오직 ID만을 선택할 수 있음.
+
+  2) `flex` 관련 내용
+    - 요소 한 줄에 특정 개수만큼만 보이게 하고 싶을 때:
+      1. `flex-basis` 사용: flex 아이템의 기본 크기 설정.(`flex-direction`이 row일 떄는 너비, column일 때는 높이). 각종 단위 수(px, % 등) 들어갈 수 있음. 
+        - 예를 들어, 한 줄에 3개씩 배치하고 싶다면 각 요소의 너비를 33.33%로 설정하여 한 줄에 3개가 들어가도록 만들 수 있음.
+      2. `flex-grow` 사용: 유연하게 늘리는 법. 아이템이 `flex-basis` 값보다 커질 수 있는지를 결정하는 속성. 숫자값이 들어감. 0보다 큰 값이 설정되면 해당 아이템이 유연한 박스로 변하고 원래 크기보다 커지며 빈 공간을 메우게 됨.(기본 값이 0이어서 따로 적용하기 전에는 아이템이 늘어나지 않음). `flex-basis`를 제외한 여백 부분을 flex-grow에 지정된 숫자의 비율로 나누어 가짐.
+        - 예를 들어,  `flex: 1 1 calc(33.33%);` 이런 식으로 flex-grow 속성을 사용하여 한 줄에 3개씩 꽉 차게 만들 수 있음.
+
+    - 줄넘김 처리: `flex-wrap`
+      - `nowrap`(기본값, 넘치면 걍 삐져나옴), `wrap`(줄바꿈함),`wrap-reverse`(역순으로 줄바꿈함)
+    
+    - 정렬: `justify`는 메인축 방향으로 정렬(수평),`align`은 수직 축으로 정렬
+      1. `justify-content`: 메인축 방향으로 아이템 정렬
+        -  `flex-start`(기본값, 시작점으로 정렬),`flex-end`(끝점 정렬), `center`(가운데),`space-between`(아이템들의 사이에 균일한 간격 만들어줌),`space-around`(아이템들의 둘레에 균일한 간격),`space-evenly`(아이템들의 사이와 양 끝에 균일한 간격//IE와 EDGE 브라우저에서는 지원 안됨.)
+      
+      2. `align-items`: 수직축 방향으로 아이템들 정렬.
+        - `stretch`(기본값, 수직축 방향),`flex-start`,`flex-end`,`center`,`baseline`
+
+      3. `align-content`: 여러행 정렬, `wrap`이 설정된 상태에서, 아이템들의 행이 2줄 이상 되었을 땨의 수직축 방향 정렬.
+      
